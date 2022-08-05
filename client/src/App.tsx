@@ -1,9 +1,16 @@
 import "./styles/App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { CreateOrEdit } from "./pages/CreateOrEdit";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/posts/create" element={<CreateOrEdit />} />
+        <Route path="/posts/edit/{id}" element={<CreateOrEdit />} />
+      </Routes>
     </div>
   );
 }
