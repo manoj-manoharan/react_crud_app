@@ -29,6 +29,10 @@ class PostController extends Controller
      */
     public function store(Request $request): Response
     {
+
+        // todo : add validator
+        // todo : add exception handling
+
         $post = new Post();
 
         $post->userId = $request->userId;
@@ -62,6 +66,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post): Response
     {
+
+
+        // todo : add validator
+        // todo : add exception handling
+
+
         $post->userId = $request->userId;
         $post->title = $request->title;
         $post->body = $request->body;
