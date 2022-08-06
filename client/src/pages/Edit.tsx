@@ -1,8 +1,7 @@
-import React, {FormEvent, KeyboardEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, FormEvent, KeyboardEvent, useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
-import {PostType} from "../types";
 import {TextArea} from "../components/UI/TextArea";
 
 export const Edit: React.FC = () => {
@@ -41,7 +40,7 @@ export const Edit: React.FC = () => {
                   type="text"
                   placeholder="Title"
                   defaultValue={title}
-                  onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setTitle((e.target as HTMLInputElement).value)
                   }}
             />
@@ -50,7 +49,7 @@ export const Edit: React.FC = () => {
                 id="body"
                 placeholder="Body"
                 defaultValue={body}
-                onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
+                onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                     setBody((e.target as HTMLTextAreaElement).value)
                 }}
             />

@@ -1,4 +1,4 @@
-import React, {FormEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent, KeyboardEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
@@ -15,12 +15,12 @@ export const Create: React.FC = (props) => {
         <form onSubmit={validateAndCreatePost}>
 
             <Text id="title" type="text" placeholder="Title" defaultValue={title}
-                  onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setTitle((e.target as HTMLInputElement).value)
                   }}/>
 
             <TextArea id="body" placeholder="Body"
-                      onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                           setBody((e.target as HTMLTextAreaElement).value)
                       }}/>
 

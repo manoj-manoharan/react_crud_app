@@ -1,10 +1,10 @@
-import React, {KeyboardEvent} from "react";
+import React, {ChangeEvent, KeyboardEvent} from "react";
 
 type TextInputParams = {
     id?: string,
     type?: string,
     placeholder?: string,
-    onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void,
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
     defaultValue? : string|number
 };
 
