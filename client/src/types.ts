@@ -11,7 +11,9 @@ export type HttpCRUDApi<T, ID extends keyof T> = {
 
   get(id: T[ID]): Promise<T|null>
 
-  create(data: T): Promise<boolean>
+  create(data: {
+    [K in Exclude<keyof T, ID>] : T[K]
+  }): Promise<boolean>
 
   update(id: T[ID], data: T): Promise<boolean>
 

@@ -56,7 +56,10 @@ export const Api: { posts: PostApi } = {
             try {
                 const response = await fetch(`${DOMAIN}/posts`, {
                     method: "POST",
-                    body: JSON.stringify({...data})
+                    body: JSON.stringify({...data}),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 });
 
                 post = response.ok;
@@ -72,7 +75,10 @@ export const Api: { posts: PostApi } = {
             try {
                 const response = await fetch(`${DOMAIN}/posts/${id}`, {
                     method: "PUT",
-                    body: JSON.stringify({...data})
+                    body: JSON.stringify({...data}),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 });
 
                 post = response.ok;
@@ -88,7 +94,10 @@ export const Api: { posts: PostApi } = {
 
             try {
                 const response = await fetch(`${DOMAIN}/posts/${id}`, {
-                    method: "DELETE"
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 });
 
                 post = response.ok;
