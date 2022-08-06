@@ -1,21 +1,13 @@
-import React, {useEffect, useState} from "react";
-import type {PostType} from "../types";
-import {Button} from "../components/Button";
+import React from "react";
+import {Button} from "../components/UI/Button";
 import {Link} from "react-router-dom";
-import {Api} from "../lib/api";
+import {usePostsFetch} from "../hooks/usePostsFetch";
+import {ViewPost} from "../components/UX/Post/ViewPost";
+import {DeletePost} from "../components/UX/Post/DeletePost";
 
 export const Home: React.FC = () => {
-    const [loading, setLoading] = useState(true);
-    const [posts, setPosts] = useState<PostType[]>([]);
 
-    useEffect(() => {
-        Api.posts.list().then(response => {
-            if (Array.isArray(response.data)) {
-                setPosts(response.data);
-                setLoading(false);
-            }
-        })
-    }, []);
+    const {loading, posts, setPosts} = usePostsFetch();
 
     return (
         <>
@@ -25,14 +17,14 @@ export const Home: React.FC = () => {
             {loading && <p>Loading...</p>}
             {!loading && posts.map((post) => {
                 return (
-                    <p>
+                    <p key={post.id}>
                         {post.title}
                         &nbsp;
-                        <Button>Delete</Button>
+                        <ViewPost postId={post.id}/>
                         &nbsp;
                         <Link to={`/posts/edit/${post.id}`}>Edit</Link>
                         &nbsp;
-                        <Button>Delete</Button>
+                        <DeletePost postId={post.id} setPosts={setPosts}/>
                     </p>
                 );
             })}

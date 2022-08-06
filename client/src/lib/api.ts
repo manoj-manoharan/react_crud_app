@@ -27,7 +27,6 @@ export const Api: { posts: PostApi } = {
                 const response = await fetch(`${DOMAIN}/posts`);
 
                 if (response.ok) {
-                    console.log(response)
                     posts = await response.json();
                 }
             } catch (e) {
