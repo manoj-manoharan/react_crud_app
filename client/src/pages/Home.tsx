@@ -5,12 +5,14 @@ import {Link} from "react-router-dom";
 import {Api} from "../lib/api";
 
 export const Home: React.FC = () => {
+    const [loading, setLoading] = useState(true);
     const [posts, setPosts] = useState<PostType[]>([]);
 
     useEffect(() => {
         Api.posts.list().then(response => {
             if (Array.isArray(response.data)) {
                 setPosts(response.data);
+                setLoading(false);
             }
         })
     }, []);
@@ -20,7 +22,8 @@ export const Home: React.FC = () => {
             <Button>
                 <Link to="/posts/create">Create</Link>
             </Button>
-            {posts.length > 0 && posts.map((post) => {
+            {loading && <p>Loading...</p>}
+            {!loading && posts.map((post) => {
                 return (
                     <p>
                         {post.title}
