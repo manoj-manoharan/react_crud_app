@@ -1,18 +1,35 @@
-import {PostApi, PostType} from "../types";
+import {PageResult, PostApi, PostType} from "../types";
 import EnvConfig from '../envs.config';
 
-const DOMAIN = EnvConfig[process.env.NODE_ENV ?? 'development'];
+const DOMAIN = EnvConfig[process.env.NODE_ENV ?? 'development'].host;
 
 export const Api: { posts: PostApi } = {
     posts: {
-        async list(): Promise<PostType[]> {
+        async list(): Promise<PageResult<PostType>> {
 
-            let posts: PostType[] = [];
+            let posts: PageResult<PostType> = {
+                "current_page": 1,
+                "data": [],
+                "first_page_url": "",
+                "from": 1,
+                "last_page": 1,
+                "last_page_url": "",
+                "links": [],
+                "next_page_url": null,
+                "path": "",
+                "per_page": 10,
+                "prev_page_url": null,
+                "to": 0,
+                "total": 0
+            };
 
             try {
                 const response = await fetch(`${DOMAIN}/posts`);
 
-                posts = await response.json();
+                if (response.ok) {
+                    console.log(response)
+                    posts = await response.json();
+                }
             } catch (e) {
                 console.log(e);
             }
