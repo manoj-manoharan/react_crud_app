@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import {usePostsFetch} from "../hooks/usePostsFetch";
 import {ViewPost} from "../components/UX/Post/ViewPost";
 import {DeletePost} from "../components/UX/Post/DeletePost";
-import {Modal} from "../components/UI/Modal";
-import {LoadingModal} from "../components/UI/LoadingModal";
+import {ExampleModal} from "../components/UI/Modal/ExampleModal";
+import {LoadingModal} from "../components/UI/Modal/LoadingModal";
 
 export const Home: React.FC = () => {
 
@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
 
     return (
         <>
-            <LoadingModal toggleModal={toggleModal}>Loading...</LoadingModal>
+            <LoadingModal canShowModal={toggleModal} />
             <button onClick={e => setToggleModal(!toggleModal)}>Show modal</button>
             <Button>
                 <Link to="/posts/create">Create</Link>

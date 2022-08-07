@@ -1,16 +1,13 @@
-import {PropsWithChildren, useState, FC, useEffect} from "react";
+import React, {PropsWithChildren} from "react";
 
-export const LoadingModal: FC<PropsWithChildren<{ toggleModal?: boolean }>>
-    = ({toggleModal = false, children}) => {
-    const [showModal, setShowModal] = useState(false);
-
-    useEffect(() => {
-        setShowModal(toggleModal);
-    }, [toggleModal])
-
+export const Modal: React.FC<PropsWithChildren<{
+    canShowModal?: boolean,
+    header?: any,
+    footer?: any
+}>> = ({children, canShowModal = false, header = <></>, footer = <></>}) => {
     return (
         <>
-            {showModal ? (
+            {canShowModal ? (
                 <>
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -19,10 +16,12 @@ export const LoadingModal: FC<PropsWithChildren<{ toggleModal?: boolean }>>
                             {/*content*/}
                             <div
                                 className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                {header}
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto">
-                                    {children}
-                                </div>
+                                {children}
+                                {/*footer*/}
+                                {footer}
                             </div>
                         </div>
                     </div>

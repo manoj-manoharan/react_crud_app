@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from "react";
 
-export const Modal: React.FC<PropsWithChildren> = ({children}) => {
+export const ExampleModal: React.FC<PropsWithChildren> = ({children}) => {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>
