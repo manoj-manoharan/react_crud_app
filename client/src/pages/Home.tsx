@@ -10,16 +10,13 @@ import {LoadingModal} from "../components/UI/Modal/LoadingModal";
 export const Home: React.FC = () => {
 
     const {loading, posts, setPosts} = usePostsFetch();
-    const [toggleModal, setToggleModal] = useState(false);
 
     return (
         <>
-            <LoadingModal canShowModal={toggleModal} />
-            <button onClick={e => setToggleModal(!toggleModal)}>Show modal</button>
             <Button>
                 <Link to="/posts/create">Create</Link>
             </Button>
-            {loading && <p>Loading...</p>}
+            <LoadingModal canShowModal={loading} />
             {!loading && posts.map((post) => {
                 return (
                     <p key={post.id}>
