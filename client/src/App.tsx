@@ -3,18 +3,15 @@ import {Routes, Route, Link} from "react-router-dom";
 import {Home} from "./pages/Home";
 import {Create} from "./pages/Create";
 import {Edit} from "./pages/Edit";
+import {MainLayout} from "./layout/MainLayout";
 
 function App() {
     return (
-        <div className="container">
-            <div className="content">
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/posts/create" element={<Create/>}/>
-                    <Route path="/posts/edit/:id" element={<Edit/>}/>
-                </Routes>
-            </div>
-        </div>
+        <Routes>
+            <Route path="/" element={<MainLayout><Home/></MainLayout>}/>
+            <Route path="/posts/create" element={<MainLayout><Create/></MainLayout>}/>
+            <Route path="/posts/edit/:id" element={<MainLayout><Edit/></MainLayout>}/>
+        </Routes>
     );
 }
 
