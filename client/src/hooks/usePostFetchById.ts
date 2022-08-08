@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useState,FC} from "react"
 import {PostType} from "../types";
 import {Api} from "../lib/api";
 

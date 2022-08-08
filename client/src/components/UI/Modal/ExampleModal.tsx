@@ -1,7 +1,7 @@
-import React, {PropsWithChildren} from "react";
+import {PropsWithChildren, FC, useState} from "react"
 
-export const ExampleModal: React.FC<PropsWithChildren> = ({children}) => {
-    const [showModal, setShowModal] = React.useState(false);
+export const ExampleModal: FC<PropsWithChildren> = ({children}) => {
+    const [showModal, setShowModal] = useState(false);
     return (
         <>
             <button

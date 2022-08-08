@@ -1,9 +1,9 @@
-import React, {PropsWithChildren} from "react";
+import  {PropsWithChildren, ReactElement,FC} from "react"
 
-export const Modal: React.FC<PropsWithChildren<{
+export const Modal: FC<PropsWithChildren<{
     canShowModal?: boolean,
-    header?: any,
-    footer?: any
+    header?: ReactElement,
+    footer?: ReactElement
 }>> = ({children, canShowModal = false, header = <></>, footer = <></>}) => {
     return (
         <>

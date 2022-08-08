@@ -1,12 +1,12 @@
 import {Button} from "../../UI/Button";
-import React, {useState} from "react";
+import  {useState,FC} from "react"
 import {PostType} from "../../../types";
 import {LoadingModal} from "../../UI/Modal/LoadingModal";
 import {Api} from "../../../lib/api";
 import {set} from "husky";
 import {Modal} from "../../UI/Modal/Modal";
 
-export const ViewPost: React.FC<{ postId: PostType['id'] }> = ({postId}) => {
+export const ViewPost: FC<{ postId: PostType['id'] }> = ({postId}) => {
 
     const [loading, setLoading] = useState<boolean>(false);
     const [post, setPost] = useState<PostType | null>(null);

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from "react";
+import  {ChangeEvent, KeyboardEvent,FC} from "react"
 
 type TextInputParams = {
     id?: string,
@@ -7,6 +7,6 @@ type TextInputParams = {
     onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
 };
 
-export const TextArea: React.FC<TextInputParams> = (props) => {
+export const TextArea: FC<TextInputParams> = (props) => {
     return <textarea {...props}/>
 }

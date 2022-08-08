@@ -1,10 +1,10 @@
-import React, {ChangeEvent, FormEvent, KeyboardEvent, useState} from "react";
+import  {ChangeEvent, FormEvent, KeyboardEvent, useState,FC} from "react"
 import {useNavigate} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
 import {TextArea} from "../components/UI/TextArea";
 
-export const Create: React.FC = (props) => {
+export const Create: FC = (props) => {
 
     const navigate = useNavigate()
     const [userId, setUserId] = useState(1);

@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC} from "react"
 import {Modal} from "./Modal";
 
 export const LoadingModal: FC<{ canShowModal?: boolean }>

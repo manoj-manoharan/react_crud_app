@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import  {useState,FC} from "react"
 import {Button} from "../components/UI/Button";
 import {Link} from "react-router-dom";
 import {usePostsFetch} from "../hooks/usePostsFetch";
@@ -7,7 +7,7 @@ import {DeletePost} from "../components/UX/Post/DeletePost";
 import {ExampleModal} from "../components/UI/Modal/ExampleModal";
 import {LoadingModal} from "../components/UI/Modal/LoadingModal";
 
-export const Home: React.FC = () => {
+export const Home: FC = () => {
 
     const {loading, posts, setPosts} = usePostsFetch();
 

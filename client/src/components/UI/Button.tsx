@@ -1,5 +1,5 @@
-import React, {PropsWithChildren} from "react";
+import  {PropsWithChildren,FC} from "react"
 
-export const Button: React.FC<PropsWithChildren<{ onClick?: () => void }>> = ({onClick, children}) => {
+export const Button: FC<PropsWithChildren<{ onClick?: () => void }>> = ({onClick, children}) => {
     return <button className="m4" onClick={onClick}>{children}</button>;
 };

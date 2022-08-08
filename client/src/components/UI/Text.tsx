@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from "react";
+import  {ChangeEvent, KeyboardEvent,FC} from "react"
 
 type TextInputParams = {
     id?: string,
@@ -8,6 +8,6 @@ type TextInputParams = {
     defaultValue? : string|number
 };
 
-export const Text: React.FC<TextInputParams> = (props) => {
+export const Text: FC<TextInputParams> = (props) => {
     return <input {...props} />
 }

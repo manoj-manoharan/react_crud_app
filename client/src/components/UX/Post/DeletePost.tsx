@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from "react";
+import  {Dispatch, SetStateAction, useState,FC} from "react"
 import {PostType} from "../../../types";
 import {Button} from "../../UI/Button";
 import {LoadingModal} from "../../UI/Modal/LoadingModal";
@@ -6,7 +6,7 @@ import {Api} from "../../../lib/api";
 
 type DeletePostParams = { postId: PostType['id'], setPosts: Dispatch<SetStateAction<PostType[]>> };
 
-export const DeletePost: React.FC<DeletePostParams> = ({postId, setPosts}) => {
+export const DeletePost: FC<DeletePostParams> = ({postId, setPosts}) => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
