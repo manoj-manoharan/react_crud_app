@@ -1,5 +1,5 @@
 import {Button} from "../../UI/Button";
-import  {useState,FC} from "react"
+import {useState, FC} from "react"
 import {PostType} from "../../../types";
 import {LoadingModal} from "../../UI/Modal/LoadingModal";
 import {Api} from "../../../lib/api";
@@ -21,10 +21,10 @@ export const ViewPost: FC<{ postId: PostType['id'] }> = ({postId}) => {
                 }}>Close</Button>}
             >
                 <div className="m-4">
-                    UserId : {post.id}<br/>
-                    Title : {post.title}<br/>
-                    Body : {post.body}<br/>
-                    <hr />
+                    <h1 className="text-3xl">{post.title}</h1>
+                    <small className="font-extralight">By User #{post.id}</small>
+                    <p>{post.body}</p>
+
                 </div>
             </Modal>
         }
