@@ -6,12 +6,14 @@ import {Edit} from "./pages/Edit";
 
 function App() {
     return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/posts/create" element={<Create/>}/>
-                <Route path="/posts/edit/:id" element={<Edit/>}/>
-            </Routes>
+        <div className="container">
+            <div className="content">
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/posts/create" element={<Create/>}/>
+                    <Route path="/posts/edit/:id" element={<Edit/>}/>
+                </Routes>
+            </div>
         </div>
     );
 }
