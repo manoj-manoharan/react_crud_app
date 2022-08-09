@@ -1,13 +1,15 @@
-import  {ChangeEvent, FormEvent, KeyboardEvent, useEffect, useState,FC} from "react"
+import {ChangeEvent, FormEvent, KeyboardEvent, useEffect, useState, FC} from "react"
 import {useNavigate, useParams} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
 import {TextArea} from "../components/UI/TextArea";
 import {Button} from "../components/UI/Button";
+import {PostForm} from "../components/UX/Post/PostForm";
 
 export const Edit: FC = () => {
 
     const {id} = useParams();
+    const [isPostValid, setIsPostValid] = useState(false);
     const navigate = useNavigate()
     const [userId, setUserId] = useState(1);
     const [title, setTitle] = useState("");
@@ -35,29 +37,15 @@ export const Edit: FC = () => {
     }, [id])
 
     return <>
-        <form className="form" onSubmit={validateAndUpdatePost}>
-
-            <Text id="title"
-                  type="text"
-                  placeholder="Title"
-                  defaultValue={title}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                      setTitle((e.target as HTMLInputElement).value)
-                  }}
-            />
-
-            <TextArea
-                id="body"
-                placeholder="Body"
-                defaultValue={body}
-                onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
-                    setBody((e.target as HTMLTextAreaElement).value)
-                }}
-            />
-
-            <Button buttonStyle="info" type="submit">Update Post</Button>
-
-        </form>
+        <PostForm
+            action="update"
+            handler={validateAndUpdatePost}
+            title={title}
+            body={body}
+            setTitle={setTitle}
+            setBody={setBody}
+            setIsPostValid={setIsPostValid}
+        />
     </>;
 
     function validateAndUpdatePost(event: FormEvent<HTMLFormElement>) {
@@ -65,6 +53,10 @@ export const Edit: FC = () => {
 
         if (!id) {
             alert("Id not valid for updating post");
+            return;
+        }
+
+        if (!isPostValid) {
             return;
         }
 
