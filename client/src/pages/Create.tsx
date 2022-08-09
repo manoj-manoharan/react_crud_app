@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
 import {TextArea} from "../components/UI/TextArea";
+import {Button} from "../components/UI/Button";
 
 export const Create: FC = (props) => {
 
@@ -12,7 +13,7 @@ export const Create: FC = (props) => {
     const [body, setBody] = useState("");
 
     return <>
-        <form onSubmit={validateAndCreatePost}>
+        <form className="form" onSubmit={validateAndCreatePost}>
 
             <Text id="title" type="text" placeholder="Title" defaultValue={title}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +25,7 @@ export const Create: FC = (props) => {
                           setBody((e.target as HTMLTextAreaElement).value)
                       }}/>
 
-            <button type="submit">Create Post</button>
+            <Button buttonStyle="info" type="submit">Create Post</Button>
 
         </form>
     </>;

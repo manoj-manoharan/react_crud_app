@@ -3,6 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
 import {TextArea} from "../components/UI/TextArea";
+import {Button} from "../components/UI/Button";
 
 export const Edit: FC = () => {
 
@@ -34,7 +35,7 @@ export const Edit: FC = () => {
     }, [id])
 
     return <>
-        <form onSubmit={validateAndUpdatePost}>
+        <form className="form" onSubmit={validateAndUpdatePost}>
 
             <Text id="title"
                   type="text"
@@ -54,7 +55,7 @@ export const Edit: FC = () => {
                 }}
             />
 
-            <button type="submit">Update Post</button>
+            <Button buttonStyle="info" type="submit">Update Post</Button>
 
         </form>
     </>;

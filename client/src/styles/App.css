@@ -46,3 +46,24 @@
     display: flex;
     justify-content: center;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.form > input, .form > textarea {
+   border: #394667 0.5px solid;
+    min-width: 90%;
+    padding: 0.5rem;
+    justify-self: center;
+    border-radius: 0.2rem;
+    box-shadow: 1px 1px #9b9b9b;
+}
+
+.form > textarea {
+    min-height: 70vh;
+}

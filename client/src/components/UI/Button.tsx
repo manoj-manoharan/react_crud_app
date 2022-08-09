@@ -4,11 +4,14 @@ export const Button: FC<PropsWithChildren<{
     onClick?: () => void,
     style?: object,
     buttonStyle?: 'default' | 'info' | 'warning',
-    className?: string
-}>> = ({style, onClick, children, buttonStyle, className}) => {
-    return <button  style={style}
-                   className={`${className} ${styleDecider(buttonStyle)}`}
-                   onClick={onClick}>
+    className?: string,
+    type?: "submit" | "button"
+}>> = ({type, style, onClick, children, buttonStyle, className}) => {
+    return <button
+        type={type ? type : "button"}
+        style={style}
+        className={`${className} ${styleDecider(buttonStyle)}`}
+        onClick={onClick}>
         {children}
     </button>;
 };
