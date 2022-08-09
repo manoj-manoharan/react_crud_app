@@ -5,7 +5,8 @@ type TextInputParams = {
     type?: string,
     placeholder?: string,
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
-    defaultValue? : string|number
+    defaultValue? : string|number,
+    className? : string
 };
 
 export const Text: FC<TextInputParams> = (props) => {

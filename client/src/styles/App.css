@@ -47,7 +47,7 @@
     justify-content: center;
 }
 
-.form {
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,8 +55,14 @@
     padding: 2rem;
 }
 
-.form > input, .form > textarea {
-   border: #394667 0.5px solid;
+.form-item {
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+}
+
+.form-input, .form-textarea {
+    border: #394667 0.5px solid;
     min-width: 90%;
     padding: 0.5rem;
     justify-self: center;
@@ -64,6 +70,6 @@
     box-shadow: 1px 1px #9b9b9b;
 }
 
-.form > textarea {
+.form-textarea {
     min-height: 70vh;
 }

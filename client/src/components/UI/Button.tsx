@@ -5,16 +5,26 @@ export const Button: FC<PropsWithChildren<{
     style?: object,
     buttonStyle?: 'default' | 'info' | 'warning',
     className?: string,
-    type?: "submit" | "button"
-}>> = ({type, style, onClick, children, buttonStyle, className}) => {
+    type?: "submit" | "button",
+    disabled?: boolean
+}>> = ({type, style, onClick, children, buttonStyle, className, disabled}) => {
     return <button
         type={type ? type : "button"}
         style={style}
-        className={`${className} ${styleDecider(buttonStyle)}`}
+        className={`${className} ${styleDecider(buttonStyle)} ${getDisabledClasses(disabled)}`}
         onClick={onClick}>
         {children}
     </button>;
 };
+
+const getDisabledClasses = (disabled?: boolean): string => {
+    let classes = "";
+
+    if (disabled) {
+        classes = "opacity-50 cursor-not-allowed"
+    }
+    return classes;
+}
 
 const styleDecider = (buttonStyle?: 'default' | 'info' | 'warning') => {
 
