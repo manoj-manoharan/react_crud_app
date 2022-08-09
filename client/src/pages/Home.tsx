@@ -19,8 +19,8 @@ export const Home: FC = () => {
                 </Button>
             </div>
             <LoadingModal canShowModal={loading}/>
-            <div className="post-list">
-                {!loading && posts.map((post) => {
+            {!loading && posts.length > 0 && <div className="post-list">
+                {posts.map((post) => {
                     return (
                         <div className="post-item" key={post.id}>
                             <span className="title">{post.title}</span>
@@ -31,7 +31,10 @@ export const Home: FC = () => {
                         </div>
                     );
                 })}
-            </div>
+            </div>}
+            {!loading && posts.length <= 0 && <div className="flex-block m-10">
+                <h1 className="text-2xl">No posts available. Please click the Create button to create new post.</h1>
+            </div>}
         </>
     );
 };
