@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('userId');
             $table->string('title');
-            $table->string('body');
+            $table->text('body');
         });
     }
 
