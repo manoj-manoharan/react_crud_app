@@ -1,4 +1,4 @@
-import  {ChangeEvent, KeyboardEvent,FC} from "react"
+import  {ChangeEvent, FC} from "react"
 
 type TextInputParams = {
     id?: string,

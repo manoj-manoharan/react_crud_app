@@ -1,9 +1,6 @@
-import {ChangeEvent, FormEvent, KeyboardEvent, useEffect, useState, FC} from "react"
+import {FormEvent, useEffect, useState, FC} from "react"
 import {useNavigate, useParams} from "react-router-dom";
-import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
-import {TextArea} from "../components/UI/TextArea";
-import {Button} from "../components/UI/Button";
 import {PostForm} from "../components/UX/Post/PostForm";
 
 export const Edit: FC = () => {
@@ -30,6 +27,7 @@ export const Edit: FC = () => {
             }
             throw new Error("Post not valid");
         }).catch(err => {
+            console.log({err})
             alert("Error, Post not available. Redirecting to Home")
             navigate('/');
             return;
@@ -71,7 +69,10 @@ export const Edit: FC = () => {
                 }
                 throw new Error("Post not updated.");
             })
-            .catch(err => alert("Error, Post not updated."));
+            .catch(err => {
+                console.log({err})
+                alert("Error, Post not updated.")
+            });
 
     }
 };

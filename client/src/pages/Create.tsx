@@ -1,18 +1,14 @@
-import {ChangeEvent, FormEvent, KeyboardEvent, useState, FC} from "react"
+import {FormEvent, useState, FC} from "react"
 import {useNavigate} from "react-router-dom";
-import {Text} from '../components/UI/Text';
 import {Api} from "../lib/api";
-import {TextArea} from "../components/UI/TextArea";
-import {Button} from "../components/UI/Button";
-import {text} from "stream/consumers";
 import {PostForm} from "../components/UX/Post/PostForm";
 
-export const Create: FC = (props) => {
+export const Create: FC = () => {
 
 
     const navigate = useNavigate()
     const [isPostValid, setIsPostValid] = useState(false);
-    const [userId, setUserId] = useState(1);
+    const [userId] = useState(1);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
 
@@ -46,7 +42,10 @@ export const Create: FC = (props) => {
                 }
                 throw new Error("Post not created.")
             })
-            .catch(err => alert("Error, Post not created."));
+            .catch(err => {
+                console.log({err})
+                alert("Error, Post not created.")
+            });
 
     }
 };
