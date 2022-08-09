@@ -13,9 +13,11 @@ export const Home: FC = () => {
 
     return (
         <>
-            <Button style={{width: "100%"}} buttonStyle="info">
-                <Link to="/posts/create">Create</Link>
-            </Button>
+            <div className="flex-block">
+                <Button buttonStyle="info" style={{width : "99%"}}>
+                    <Link to="/posts/create">Create New Post</Link>
+                </Button>
+            </div>
             <LoadingModal canShowModal={loading}/>
             <div className="post-list">
                 {!loading && posts.map((post) => {
@@ -23,7 +25,8 @@ export const Home: FC = () => {
                         <div className="post-item" key={post.id}>
                             <span className="title">{post.title}</span>
                             <span className="view"><ViewPost postId={post.id}/></span>
-                            <span className="edit"><Link to={`/posts/edit/${post.id}`}><Button buttonStyle="info">Edit</Button></Link></span>
+                            <span className="edit"><Link to={`/posts/edit/${post.id}`}><Button
+                                buttonStyle="info">Edit</Button></Link></span>
                             <span className="delete"><DeletePost postId={post.id} setPosts={setPosts}/></span>
                         </div>
                     );

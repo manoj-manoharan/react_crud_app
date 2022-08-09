@@ -16,9 +16,16 @@ export const ViewPost: FC<{ postId: PostType['id'] }> = ({postId}) => {
         {post &&
             <Modal
                 canShowModal={Object.keys(post).length > 0}
-                footer={<Button buttonStyle="warning" onClick={() => {
-                    setPost(null)
-                }}>Close</Button>}
+                footer={
+                    <div className="flex-block">
+                        <Button
+                            className="m-4"
+                            buttonStyle="warning"
+                            onClick={() => {
+                                setPost(null)
+                            }}>Close</Button>
+                    </div>
+                }
             >
                 <div className="m-4">
                     <h1 className="text-3xl">{post.title}</h1>

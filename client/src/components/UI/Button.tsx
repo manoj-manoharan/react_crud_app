@@ -3,10 +3,11 @@ import {PropsWithChildren, FC} from "react"
 export const Button: FC<PropsWithChildren<{
     onClick?: () => void,
     style?: object,
-    buttonStyle?: 'default' | 'info' | 'warning'
-}>> = ({style, onClick, children, buttonStyle}) => {
-    return <button style={style}
-                   className={styleDecider(buttonStyle)}
+    buttonStyle?: 'default' | 'info' | 'warning',
+    className?: string
+}>> = ({style, onClick, children, buttonStyle, className}) => {
+    return <button  style={style}
+                   className={`${className} ${styleDecider(buttonStyle)}`}
                    onClick={onClick}>
         {children}
     </button>;

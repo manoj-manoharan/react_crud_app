@@ -41,3 +41,8 @@
 .delete {
     flex: 1;
 }
+
+.flex-block {
+    display: flex;
+    justify-content: center;
+}
