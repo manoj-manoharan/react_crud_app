@@ -12,7 +12,7 @@ export const DeletePost: FC<DeletePostParams> = ({postId, setPosts}) => {
 
     return <>
         <LoadingModal canShowModal={loading}/>
-        <Button onClick={deletePostHandler}>Delete</Button>
+        <Button buttonStyle="warning" onClick={deletePostHandler}>Delete</Button>
     </>
 
     function deletePostHandler() {

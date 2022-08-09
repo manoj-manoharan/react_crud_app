@@ -13,7 +13,7 @@ export const Home: FC = () => {
 
     return (
         <>
-            <Button style={{width: "100%"}}>
+            <Button style={{width: "100%"}} buttonStyle="info">
                 <Link to="/posts/create">Create</Link>
             </Button>
             <LoadingModal canShowModal={loading}/>
@@ -23,7 +23,7 @@ export const Home: FC = () => {
                         <div className="post-item" key={post.id}>
                             <span className="title">{post.title}</span>
                             <span className="view"><ViewPost postId={post.id}/></span>
-                            <span className="edit"><Link to={`/posts/edit/${post.id}`}><Button>Edit</Button></Link></span>
+                            <span className="edit"><Link to={`/posts/edit/${post.id}`}><Button buttonStyle="info">Edit</Button></Link></span>
                             <span className="delete"><DeletePost postId={post.id} setPosts={setPosts}/></span>
                         </div>
                     );

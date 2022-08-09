@@ -16,7 +16,7 @@ export const ViewPost: FC<{ postId: PostType['id'] }> = ({postId}) => {
         {post &&
             <Modal
                 canShowModal={Object.keys(post).length > 0}
-                footer={<Button onClick={() => {
+                footer={<Button buttonStyle="warning" onClick={() => {
                     setPost(null)
                 }}>Close</Button>}
             >
