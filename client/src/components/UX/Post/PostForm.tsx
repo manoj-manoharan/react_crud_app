@@ -5,7 +5,7 @@ import {Button} from "../../UI/Button";
 import {capitalizeFirstLetter} from "../../../lib/util";
 
 export const PostForm: FC<{
-    action : "create" | "update"
+    action: "create" | "update"
     handler: (event: FormEvent<HTMLFormElement>) => void,
     title: string,
     body: string,
@@ -19,7 +19,7 @@ export const PostForm: FC<{
 
     useEffect(() => {
         setIsPostValid(isPostValid());
-    }, [title, body])
+    }, [title, body, setIsPostValid, isPostValid])
 
     return <>
         <form className="form-container" onSubmit={handler}>
@@ -61,7 +61,8 @@ export const PostForm: FC<{
                           }}/>
             </div>
 
-            <Button buttonStyle="info" type="submit" disabled={!isPostValid()}>{capitalizeFirstLetter(action)} Post</Button>
+            <Button buttonStyle="info" type="submit"
+                    disabled={!isPostValid()}>{capitalizeFirstLetter(action)} Post</Button>
 
         </form>
     </>

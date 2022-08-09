@@ -11,4 +11,5 @@ type TextInputParams = {
 
 export const Text: FC<TextInputParams> = (props) => {
     return <input {...props} />
+
 }
