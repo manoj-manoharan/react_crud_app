@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -30,20 +30,38 @@ class PostController extends Controller
     public function store(Request $request): Response
     {
 
-        // todo : add validator
-        // todo : add exception handling
+        try {
 
-        $post = new Post();
+            $request->validate([
+                'userId' => 'required|numeric',
+                'title' => 'required|min:1|max:255',
+                'body' => 'required|min:1|max:5000',
+            ]);
 
-        $post->userId = $request->userId;
-        $post->title = $request->title;
-        $post->body = $request->body;
+            $post = new Post();
 
-        $post->save();
+            $post->userId = $request->userId;
+            $post->title = $request->title;
+            $post->body = $request->body;
 
-        return response([
-            "created" => true
-        ], 201);
+            $post->save();
+
+            return response([
+                "created" => true
+            ], 201);
+
+        } catch (\Exception $e) {
+
+            if ($e instanceof ValidationException) {
+                return response([
+                    "error" => $e->errors()
+                ], 422);
+            }
+
+            return response([
+                "error" => $e->getCode()
+            ], 500);
+        }
     }
 
     /**
@@ -67,20 +85,36 @@ class PostController extends Controller
     public function update(Request $request, Post $post): Response
     {
 
+        try {
+            $request->validate([
+                'userId' => 'required|numeric',
+                'title' => 'required|min:1|max:255',
+                'body' => 'required|min:1|max:5000',
+            ]);
 
-        // todo : add validator
-        // todo : add exception handling
+            $post->userId = $request->userId;
+            $post->title = $request->title;
+            $post->body = $request->body;
 
+            $post->save();
 
-        $post->userId = $request->userId;
-        $post->title = $request->title;
-        $post->body = $request->body;
+            return response([
+                "updated" => true
+            ], 204);
 
-        $post->save();
+        } catch (\Exception $e) {
 
-        return response([
-            "updated" => true
-        ], 204);
+            if ($e instanceof ValidationException) {
+                return response([
+                    "error" => $e->errors()
+                ], 422);
+            }
+
+            return response([
+                "error" => $e->getCode()
+            ], 500);
+        }
+
     }
 
     /**
