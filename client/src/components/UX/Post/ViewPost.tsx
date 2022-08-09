@@ -30,7 +30,7 @@ export const ViewPost: FC<{ postId: PostType['id'] }> = ({postId}) => {
                 <div className="m-4">
                     <h1 className="text-3xl">{post.title}</h1>
                     <small className="font-extralight">By User #{post.id}</small>
-                    <p>{post.body}</p>
+                    <p className="max-h-96 overflow-y-scroll">{post.body}</p>
 
                 </div>
             </Modal>
