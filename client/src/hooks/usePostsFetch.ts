@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useEffect, useState,FC} from "react"
+import {Dispatch, SetStateAction, useEffect, useState, FC} from "react"
 import {PostType} from "../types";
 import {Api} from "../lib/api";
 
@@ -18,6 +18,10 @@ export const usePostsFetch = (): {
                 setLoading(false);
             }
         })
+
+        return () => {
+            setPosts([]);
+        }
     }, []);
 
     return {loading, posts, setPosts};
